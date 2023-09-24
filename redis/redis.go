@@ -4,16 +4,10 @@ import (
 	"context"
 	"fmt"
 	"github.com/go-redis/redis/v8"
+	"github.com/zhaoxianhua/ft-multi-mod/redis/config"
 )
 
-type RedisConfig struct {
-	Host     string
-	Port     int
-	Password string
-	Db       int
-}
-
-func NewRdsClient(c RedisConfig) (*redis.Client, error) {
+func NewRdsClient(c config.RedisConfig) (*redis.Client, error) {
 	rds := redis.NewClient(&redis.Options{
 		Addr:         fmt.Sprintf("%s:%d", c.Host, c.Port),
 		DB:           c.Db,
